@@ -10,16 +10,16 @@
   <div
     class="c-users-list__body"
     ng-repeat="employee in EmployeesListComponentVm.employeesList track by $index">
-    <div>
+  <div>
       <div class="c-users-list__main-info">
         <img class="c-users-list__avatar" ng-src="{{employee.profile.avatar}}" ng-attr-alt="{{employee.profile.name}}">
-        <div>{{ employee.profile.name }}</div>
+        <div ng-bind-html="(employee.profile.name | hightlightFilter : EmployeesListComponentVm.searchTerm)"></div>
       </div>
     </div>
     <div> {{ employee.email }} </div>
-    <div> {{ employee.profile.address }} </div>
+    <div ng-bind-html="(employee.profile.address | hightlightFilter : EmployeesListComponentVm.inputChanged && EmployeesListComponentVm.searchTerm)"></div>
     <div> {{ employee.start_date | date }} </div>
     <div> {{ employee.performance_index }} </div>
-    <div> {{ employee.profile.about }} </div>
+    <div ng-bind-html="(employee.profile.about | hightlightFilter : EmployeesListComponentVm.searchTerm)"></div>
   </div>
 </div>
