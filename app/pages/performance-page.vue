@@ -1,7 +1,7 @@
 <template>
   <div class="c-dashboard">
     <div class="c-filters__container">
-      [Place filter component here]
+      <filter-component />
     </div>
     <div class="c-dashboard__header">
       <performance-chart-component />
@@ -10,11 +10,13 @@
 </template>
 
 <script>
+import FilterComponent from "../components/vue-components/filter.vue";
 import PerformanceChartComponent from "../components/vue-components/performance-chart.vue";
 export default {
   name: "AboutPageComponent",
   components: {
     PerformanceChartComponent,
+    FilterComponent,
   },
 };
 </script>

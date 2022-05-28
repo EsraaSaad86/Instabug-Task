@@ -1,9 +1,11 @@
 <div class="c-dashboard">
   <div class="c-filters__container">
-    [Place search component here]
+    <v-filter-component 
+      v-on-update-search-term="homePageVm.updateSearchTerm"
+      v-on-clear-search-term="homePageVm.clearSearchTerm" />
   </div>
 
-  <employees-list employees-list="homePageVm.employees"></employees-list>
+  <employees-list employees-list="homePageVm.employees" search-term="homePageVm.searchText" input-changed="homePageVm.inputChanged"></employees-list>
 
   <div class="c-dashboard__footer">
     <button class="c-button">
