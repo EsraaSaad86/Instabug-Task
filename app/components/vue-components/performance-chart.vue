@@ -34,16 +34,20 @@ export default {
     VChart,
   },
 
+  props: ['updatedChartData'],
+
   data() {
     return {
       chartData: [],
     };
   },
 
-  mounted () {
-    axios
-      .get('https://fe-task.getsandbox.com/performance')
-      .then(response => this.chartData = response.data)
+  watch: {
+    updatedChartData: {
+      handler (newChartData) {
+        this.chartData = newChartData;
+      }
+    }
   },
 
   computed: {
