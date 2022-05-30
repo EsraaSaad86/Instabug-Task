@@ -1,7 +1,9 @@
 angular.module('appModule')
   .config(($locationProvider) => {
+    $locationProvider.hashPrefix('');
     $locationProvider.html5Mode({
       enabled: true,
+      requireBase: false,
     });
   })
   .config(($stateProvider) => {
@@ -18,5 +20,10 @@ angular.module('appModule')
         name: 'team-performance',
         url: '/team-performance',
         template: '<v-performance-page></v-performance-page>',
+      })
+      .state({
+        name: 'not-found',
+        url: '*path',
+        template: '<v-not-found-page></v-not-found-page>',
       });
   });
