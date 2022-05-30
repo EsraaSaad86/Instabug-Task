@@ -16,6 +16,7 @@ import {
   VisualMapComponent,
 } from "echarts/components";
 import VChart from "vue-echarts";
+import axios from 'axios';
 
 use([
   CanvasRenderer,
@@ -33,39 +34,20 @@ export default {
     VChart,
   },
 
+  props: ['updatedChartData'],
+
   data() {
     return {
-      chartData: [
-        {
-          date_ms: 1641772800000,
-          performance: 0.2,
-        },
-        {
-          date_ms: 1641859200000,
-          performance: 0.33,
-        },
-        {
-          date_ms: 1641945600000,
-          performance: 0.53,
-        },
-        {
-          date_ms: 1642032000000,
-          performance: 0.31,
-        },
-        {
-          date_ms: 1642118400000,
-          performance: 0.65,
-        },
-        {
-          date_ms: 1642204800000,
-          performance: 0.88,
-        },
-        {
-          date_ms: 1642291200000,
-          performance: 0.07,
-        },
-      ],
+      chartData: [],
     };
+  },
+
+  watch: {
+    updatedChartData: {
+      handler (newChartData) {
+        this.chartData = newChartData;
+      }
+    }
   },
 
   computed: {
