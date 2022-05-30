@@ -88,6 +88,16 @@ export default {
           confine: false,
           hideDelay: 0,
           padding: 0,
+          formatter: function (params) {
+            let colorSpan = color => '<span style="display:inline-block;margin-right:5px;margin-left:10px;border-radius:10px;width:9px;height:9px;background-color:' + color + '"></span>';
+            let formattedData = '<p style="text-align: center;">' + params[0].axisValue + '</p>';
+
+            params.forEach(item => {
+            formattedData +='<p >' + colorSpan(item.color) + ' Team Performance Index: ' + item.data + '%' + '</p>'
+            });
+
+            return formattedData;
+          } 
         },
         grid: {
           left: "30px",
@@ -114,6 +124,27 @@ export default {
           axisLabel: { show: true },
           axisTick: { show: true },
           splitLine: { show: true },
+        },
+        visualMap: {
+          top: 50,
+          right: 10,
+          pieces: [
+            {
+              gt: 0,
+              lte: 50,
+              color: 'red'
+            },
+            {
+              gt: 50,
+              lte: 80,
+              color: 'yellow'
+            },
+            {
+              gt: 80,
+              lte: 100,
+              color: 'green'
+            }
+          ]
         },
         series: [
           {
